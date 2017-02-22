@@ -3,7 +3,7 @@
 *.pyc
 
 # Weight files
-bin/
+#bin/
 
 # Test data
 test/*.jpg
