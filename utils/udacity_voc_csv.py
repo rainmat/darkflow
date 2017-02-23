@@ -25,7 +25,7 @@ def udacity_voc_csv(ANN, pick, exclusive = False):
     
     dumps = list()
 
-    csv_fname = os.path.join('/home/yan/data/udacity_data/udacity.csv')
+    csv_fname = os.path.join('/home/raimat/datasets/udacity/udacity.csv')
     with open(csv_fname, 'r') as csvfile:
         spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|', )
         for row in spamreader:

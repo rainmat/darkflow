@@ -83,22 +83,22 @@ class convolutional(BaseOp):
                 'center' : False, 'scale' : True,
                 'epsilon': 1e-5, 'scope' : self.scope,
                 'updates_collections' : None,
-                'is_training': layer.h['is_training']
+                'is_training': layer.h['is_training'],
+                'param_initializers': layer.w
                 })
+            return slim.batch_norm(inp, **args)
+
+            # args = dict({
+            #     'center' : False, 'scale' : True,
+            #     'epsilon': 1e-5, 'scope' : self.scope,
+            #     'updates_collections' : None,
+            #     'is_training': layer.h['is_training']
+            #     })
             # v = tf.__version__.split('.')[1]
             # if int(v) < 12: key = 'initializers'
             # else: key = 'param_initializers'
-
-            # fix for tf 1.0.0
-            v_maj, v_min = tf.__version__.split('.')[:2]
-            if int(v_maj) < 1 and int(v_min) < 12:
-                key = 'initializers'
-            else:
-                key = 'param_initializers'
-
-
-            args.update({key : layer.w})
-            return slim.batch_norm(inp, **args)
+            # args.update({key : layer.w})
+            # return slim.batch_norm(inp, **args)
 
     def speak(self):
         l = self.lay
